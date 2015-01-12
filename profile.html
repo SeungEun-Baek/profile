@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+  <title>SeungEun Baek</title>
+  <link rel="stylesheet" type="text/css" href="profile.css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+<section class="container">
+<div id="carousel1" class="carousel">
+    <figure class="carousel-item">
+    JAVA
+    </figure>
+    <figure class="carousel-item">
+    HTML5
+    </figure>
+    <figure class="carousel-item">
+    CSS3
+    </figure>
+    <figure class="carousel-item">
+    JavaScript
+    </figure>
+    <figure class="carousel-item">
+    jQuery
+    </figure>
+    <figure class="carousel-item">
+    Tomcat Server
+    </figure>
+    <figure class="carousel-item">
+    vi
+    </figure>
+    <figure class="carousel-item">
+    Regular Expression
+    </figure>
+    <figure class="carousel-item">
+    Spring Framework
+    </figure>
+    <figure class="carousel-item">
+    git
+    </figure>
+</div>
+</section>
+
+<section class="option">
+	<p position="0">
+	<button id="previous" data-increment="1" onclick="carouselButtonOnClick(this)">Previous</button>
+	<button id="next" data-increment="-1" onclick="carouselButtonOnClick(this)">Next</button>
+	</p>
+</section>
+
+<section id="cubeSection" class="container">
+<div id="cube1" class="cube">
+    <figure class="cube-item">
+    JAVA
+    </figure>
+    <figure class="cube-item">
+    HTML5
+    </figure>
+    <figure class="cube-item">
+    CSS3
+    </figure>
+    <figure class="cube-item">
+    JavaScript
+    </figure>
+    <figure class="cube-item">
+    jQuery
+    </figure>
+    <figure class="cube-item">
+    vi
+    </figure>
+</div>
+</section>
+
+<section class="option">
+	<p position="0">
+	<button id="cube1-view" onclick="cubeButtonOnClick(this)">1</button>
+	<button id="cube2-view" onclick="cubeButtonOnClick(this)">2</button>
+	<button id="cube3-view" onclick="cubeButtonOnClick(this)">3</button>
+	<button id="cube4-view" onclick="cubeButtonOnClick(this)">4</button>
+	<button id="cube5-view" onclick="cubeButtonOnClick(this)">5</button>
+	<button id="cube6-view" onclick="cubeButtonOnClick(this)">6</button>
+	</p>
+</section>
+
+<section id='ballSection' class='container'>
+	<div id='ball1' class='ball' onmousemove='test(this)' onmouseup='test(this)'>
+    <figure class="ball-item">
+    JAVA
+    </figure>
+    <figure class="ball-item">
+    HTML5
+    </figure>
+    <figure class="ball-item">
+    CSS3
+    </figure>
+    <figure class="ball-item">
+    JavaScript
+    </figure>
+    <figure class="ball-item">
+    jQuery
+    </figure>
+    <figure class="ball-item">
+    vi
+    </figure>
+	</div>
+</section>
+
+<script>
+function carouselButtonOnClick(n) {
+	var carousel = document.getElementById('carousel1');
+	var figureCount = carousel.children.length;
+	var increment = parseInt(n.getAttribute('data-increment'));
+	var theta = parseInt(n.parentNode.getAttribute('position'));
+
+	theta += (360/figureCount) * increment;
+
+	carousel.style.transform = 'translateZ(-324px) rotateY(' + theta + 'deg)';
+	n.parentNode.setAttribute('position', theta);
+}
+
+function cubeButtonOnClick(n) {
+	var cube = document.getElementById('cube1');
+	console.log(n.innerHTML);
+	switch (n.innerHTML) {
+		case '1':
+			cube.style.transform = 'translateZ(-100px)';
+			break;
+		case '2':
+			cube.style.transform = 'translateZ(-100px) rotateY(-90deg)';
+			break;
+		case '3':
+			cube.style.transform = 'translateZ(-100px) rotateX(-90deg) rotateY(-90deg)';
+			break;
+		case '4':
+			cube.style.transform = 'translateZ(-100px) rotateY(-90deg) rotateX(-90deg) rotateY(-90deg)';
+			break;
+		case '5':
+			cube.style.transform = 'translateZ(-100px) rotateX(-90deg) rotateY(-90deg) rotateX(-90deg) rotateY(-90deg)';
+			break;
+		case '6':
+			cube.style.transform = 'translateZ(-100px) rotateY(-90deg) rotateX(-90deg) rotateY(-90deg) rotateX(-90deg) rotateY(-90deg)';
+			break;
+		default:
+	}
+
+
+}
+
+function test(n) {
+	var e = window.event;
+	var rect = n.getBoundingClientRect();
+	var centerX = (rect.right + rect.left)/2;
+	var centerY = (rect.bottom + rect.top)/2;
+	var rX = e.clientX-centerX;
+	var rY = e.clientY-centerY;
+	var ball = document.getElementById('ball1');
+	ball.style.transform = 'translateZ(-100px) rotateX(' + rX + 'deg) rotateY(' + rY + 'deg)';
+}
+
+</script>
+</body>
+
+
